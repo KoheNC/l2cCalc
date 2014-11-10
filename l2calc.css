@@ -1,0 +1,223 @@
+fieldset {
+	font-family: Tahoma;
+	font-size: 12px;
+	border: 2px #666666 solid;
+	border-radius: 8px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+	margin: 3px;
+	background-color: #E5FFE9;
+}
+legend {
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+	border: 2px #666666 solid;
+	padding: 3px;
+	background-color: #eeddcc;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+select, input {
+	border: 1px #555555 solid;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+select:disabled, input:disabled {
+	color: #545454;
+	border: 1px #bbbbbb solid;	
+	background-color: #EBEBE4;
+}
+
+.clear {
+	clear: both;
+}
+.left {
+	float: left;
+}
+
+.clear-btn {
+	-moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
+	background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+	background-color:#bddbfa;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:12px;
+	font-weight:normal;
+	font-style:normal;
+	height:16px;
+	line-height:16px;
+	width:60px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #528ecc;
+	cursor: pointer;
+}
+.clear-btn:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #80b5ea), color-stop(1, #bddbfa) );
+	background:-moz-linear-gradient( center top, #80b5ea 5%, #bddbfa 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
+	background-color:#80b5ea;
+}
+.clear-btn:active {
+	position:relative;
+	top:1px;
+}
+
+.prof-header {
+	width: 40px;
+	text-align: right;
+	padding-top: 7px;
+	margin-right: 10px;
+}
+.bstat {
+	padding-left: 10px;
+	text-align: left;
+	width: 50px;
+}
+.bstat-header {
+	width: 25px;
+	text-align: right;
+}
+.bstat-divider {
+	width: 10px;
+	height: 1px;
+}
+.tatoo-chb {
+	margin: 6px 6px 0px 8px;
+}
+.tatoo-header {
+	margin: 6px 2px 0px 0px;
+}
+.stat {
+	text-align: right;
+	width: 60px;
+}
+.stat-header {
+	width: 60px;
+	text-align: right;
+}
+.stat-divider {
+	width: 12px;
+	height: 1px;
+}
+.stat-delta {
+	width: 60px;
+	height: 14px;
+	padding-left: 6px;
+}
+.stat-plus {
+	font-weight: bold;
+	color: green;
+}
+.stat-minus {
+	font-weight: bold;
+	color: red;
+}
+.stat-equal {
+	font-weight: bold;
+	color: #444444;
+}
+.astat {
+	padding-left: 8px;
+}
+.astat-header {
+	width: 100px;
+	text-align: right;
+}
+.astat-delta {
+	width: 6px;
+	height: 14px;
+}
+.eq-header {
+	width: 100px;
+	text-align: left;
+	padding-top: 7px;
+}
+.eq-set-header {
+	padding-top: 7px;
+	padding-right: 32px;
+}
+.eq-enchant {
+	margin-left: 4px;
+}
+.eq-enchant > input {
+	width: 36px;
+	padding-left: 2px;
+}
+.passive-skill, .song-skill, .dance-skill, .self-skill, .toggle-skill, .trigger-skill, .clan-skill, .subclass-skill {
+	margin: 2px;
+	border: 1px solid #aaaaaa;
+	padding: 1px 4px;
+	background-color: #D1F0FF;
+}
+.common-skill-group {
+	border: 1px solid #aaaaaa;
+	padding: 2px;
+	margin-bottom: 2px;
+	background-color: #D1F0FF;
+}
+.common-skill-group-header {
+	margin: 6px 6px 0px 4px;
+	width: 90px;
+}
+.passive-skill > span, .self-skill > span, .toggle-skill > span, .clan-skill > span, .subclass-skill > span {
+	padding-left: 4px;
+}
+.trigger-skill > label {
+	padding-right: 4px;
+}
+
+#profession {
+	width: 210px;
+	float: left;
+}
+#bstats {
+	width: 340px;
+	float: left;
+}
+#stats {
+	width: 400px;
+	float: left;
+}
+#container {
+	margin-top: 8px;
+	overflow-y: auto;
+	border: 2px dotted gray;
+	padding: 4px;
+}
+#equipment {
+	width: 800px;
+}
+#selfbuffs, #toggles, #commonbuffs {
+	width: 600px;
+}
+#triggers, #songs, #dances, #clanskills, #subclassskills {
+	width: 600px;
+}
+#passives {
+	width: 600px;
+}
+
+#profession button {
+	border: 1px solid black;
+	border-radius: 3px;
+}

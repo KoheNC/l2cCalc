@@ -1,0 +1,35 @@
+window.l2 = window.l2 || {};
+window.l2.data = window.l2.data || {};
+
+l2.data.armorSets = [
+	{ id: 25, grade: 'b', chest: [357], legs: [383, 11355], head: [503, 11363], gloves: [5710, 11356], feet: [5726, 11359], gloves: [5710, 11356], skill: [3006, 3518] },
+	{ id: 26, grade: 'b', chest: [2376], legs: [2379, 11375], head: [2415, 11373], gloves: [5714, 11365], feet: [5730, 11370], gloves: [5714, 11365], shield: [673, 11374], skill: [3006, 3519], shieldSkill: 3548 },
+	{ id: 27, grade: 'b', chest: [2384], legs: [2388, 11353], head: [503, 12978], gloves: [5711, 11357], feet: [5727, 11360], gloves: [5711, 11357], skill: [3006, 3520] },
+	{ id: 28, grade: 'b', chest: [2390], head: [2415, 12980], gloves: [5715, 11366], feet: [5731, 11371], gloves: [5715, 11366], skill: [3006, 3521] },
+	{ id: 29, grade: 'b', chest: [2397], legs: [2402, 11378], head: [503, 12979], gloves: [5712, 11358], feet: [5728, 11361], gloves: [5712, 11358], skill: [3006, 3522] },
+	{ id: 30, grade: 'b', chest: [2406], head: [2415, 12981], gloves: [5716, 11367], feet: [5732, 11372], gloves: [5716, 11367], skill: [3006, 3523] },
+	{ id: 32, grade: 'b', chest: [358], legs: [2380, 11394], head: [2416, 11403], gloves: [5718, 11399], feet: [5734, 11396], gloves: [5718, 11399], skill: [3006, 3524], str: 3, dex: -2, con: -1 },
+	{ id: 33, grade: 'b', chest: [2381], head: [2417, 11387], gloves: [5722, 11379], feet: [5738, 11382], gloves: [5722, 11379], shield: [110, 11385], skill: [3006, 3525], shieldSkill: 3549, str: -3, con: 3 },
+	{ id: 34, grade: 'b', chest: [2391], head: [2416, 12984], gloves: [5719, 11400], feet: [5735, 11397], gloves: [5719, 11400], skill: [3006, 3526], int: -2, wit: -1, men: 3 },
+	{ id: 35, grade: 'b', chest: [2392], head: [2417, 12982], gloves: [5723, 11380], feet: [5739, 11383], gloves: [5723, 11380], skill: [3006, 3527], str: -1, dex: 3, con: -2 },
+	{ id: 36, grade: 'b', chest: [2398], legs: [2403, 11404], head: [2416, 12985], gloves: [5720, 11401], feet: [5736, 11398], gloves: [5720, 11401], skill: [3006, 3528], int: -2, wit: 3, men: -1 },
+	{ id: 37, grade: 'b', chest: [2399], legs: [2404, 11406], head: [2417, 12983], gloves: [5724, 11381], feet: [5740, 11384], gloves: [5724, 11381], skill: [3006, 3529], int: 2, wit: -3, men: 1 },
+	{ id: 12, grade: 'c', chest: [397], legs: [2387], feet: [62], skill: [3006, 3508] },
+	{ id: 13, grade: 'c', chest: [354], legs: [381], head: [2413], shield: [2495], skill: [3006, 3509], shieldSkill: 3545 },
+	{ id: 14, grade: 'c', chest: [439], legs: [471], gloves: [2454], gloves: [2454], skill: [3006, 3510] },
+	{ id: 15, grade: 'c', chest: [398], legs: [418], feet: [2431], skill: [3006, 3511], str: 4, con: -1 },
+	{ id: 19, grade: 'c', chest: [60], head: [517], shield: [107], skill: [3006, 3512], shieldSkill: 3546 },
+	{ id: 20, grade: 'c', chest: [441], legs: [472], gloves: [2459], gloves: [2459], skill: [3006, 3513], int: 4, wit: -1 },
+	{ id: 21, grade: 'c', chest: [400], legs: [420], feet: [2436], skill: [3006, 3514] },
+	{ id: 22, grade: 'c', chest: [401], feet: [2437], skill: [3006, 3515] },
+	{ id: 23, grade: 'c', chest: [356], head: [2414], shield: [2497], skill: [3006, 3516], shieldSkill: 3547 },
+	{ id: 24, grade: 'c', chest: [442], legs: [473], gloves: [2463], gloves: [2463], skill: [3006, 3517], int: -1, wit: 1 },
+	{ id: 3, grade: 'd', chest: [58], legs: [59], head: [47], shield: [628], skill: [3006, 3502], shieldSkill: 3543 },
+	{ id: 4, grade: 'd', chest: [394], legs: [416], feet: [2422], skill: [3006, 3503] },
+	{ id: 5, grade: 'd', chest: [436], legs: [469], gloves: [2447], gloves: [2447], skill: [3006, 3504] },
+	{ id: 6, grade: 'd', chest: [395], legs: [417], feet: [2424], skill: [3006, 3505] },
+	{ id: 7, grade: 'd', chest: [352], legs: [2378], head: [2411], shield: [2493], skill: [3006, 3506], shieldSkill: 3544 },
+	{ id: 8, grade: 'd', chest: [437], legs: [470], gloves: [2450], gloves: [2450], skill: [3006, 3507], int: -1, wit: 1 },
+	{ id: 1, chest: [23], legs: [2386], head: [43], skill: [3006, 3500] },
+	{ id: 2, chest: [1101], legs: [1104], head: [44], skill: [3006, 3501] }
+];

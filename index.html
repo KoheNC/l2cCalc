@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L2C Calc</title>
+	<script type="text/javascript" src="jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="l2.data.js"></script>
+	<script type="text/javascript" src="l2.data.items.js"></script>
+	<script type="text/javascript" src="l2.data.armorsets.js"></script>
+	<script type="text/javascript" src="l2.data.skilltree.js"></script>
+	<script type="text/javascript" src="l2.data.skills.js"></script>
+	<script type="text/javascript" src="l2.ui.js"></script>
+	<script type="text/javascript" src="l2.ui.tools.js"></script>
+	<script type="text/javascript" src="l2.calc.js"></script>
+	<script type="text/javascript" src="l2.data.tools.js"></script>
+	<script type="text/javascript" src="l2.data.fix.js"></script>
+	<script type="text/javascript" src="l2.model.js"></script>
+	<link rel="stylesheet" type="text/css" href="l2calc.css" />
+</head>
+<body>
+	<fieldset id="profession">
+		<legend>Profession</legend>
+		<div class="left prof-header">Race:</div>
+		<select id="race" data-model="raceId" data-load-order="3"></select>
+		<div class="clear"></div>
+		<div class="left prof-header">Prof:</div>
+		<select id="prof" data-model="prof" data-load-order="2"></select>
+		<div class="clear"></div>
+		<div class="left prof-header">Class:</div>
+		<select id="l2class" data-model="classId" data-load-order="1"></select>
+		<div class="clear"></div>
+		<div class="left prof-header">Level:</div>
+		<select id="lvl" data-model="level"></select>
+		<div class="clear"></div>
+		<div class="left prof-header">HP:</div>
+		<select id="hpperc" data-model="hpPercent"></select>
+		<div class="clear"></div>
+		<!--<div class="left prof-header">Pos:</div>
+		<select id="atkfrom" data-model="position"></select>
+		<div class="clear"></div>-->
+		<hr />
+		<div class="clear"></div>
+		<select id="saves"></select>
+		<button id="loadbtn">Load</button>
+		<button id="savebtn">Save</button>
+		<button id="deletebtn">Del</button>
+		<br />
+		<button id="sharebtn" style="display:none;">Share</button>
+	</fieldset>
+	<fieldset id="bstats">
+		<legend>Base Stats</legend>
+		<div class="left bstat-header">STR</div>
+		<div class="left bstat" id="str">00</div>
+		<div class="left bstat-divider"></div>
+		<div class="left bstat-header">DEX</div>
+		<div class="left bstat" id="dex">00</div>
+		<div class="left bstat-divider"></div>
+		<div class="left bstat-header">CON</div>
+		<div class="left bstat" id="con">00</div>
+		<div class="clear"></div>
+		<div class="left bstat-header">INT</div>
+		<div class="left bstat" id="int">00</div>
+		<div class="left bstat-divider"></div>
+		<div class="left bstat-header">WIT</div>
+		<div class="left bstat" id="wit">00</div>
+		<div class="left bstat-divider"></div>
+		<div class="left bstat-header">MEN</div>
+		<div class="left bstat" id="men">00</div>
+		<div class="clear"></div>
+		<hr />
+		<div id="tatoo-slot-1">
+			<div class="left tatoo-header">Tatoo Slot 1: </div>
+			<div class="left"><input type="checkbox" class="tatoo-chb" data-model="tatoo1.checked" /></div>
+			<div class="left"><select class="tatoo-stat" data-model="tatoo1.add.stat"></select></div>
+			<div class="left"><select class="tatoo-add" data-model="tatoo1.add.value"></select></div>
+			<div class="left"><select class="tatoo-stat" data-model="tatoo1.sub.stat"></select></div>
+			<div class="left"><select class="tatoo-sub" data-model="tatoo1.sub.value"></select></div>
+		</div>
+		<div class="clear"></div>
+		<div id="tatoo-slot-2">
+			<div class="left tatoo-header">Tatoo Slot 2: </div>
+			<div class="left"><input type="checkbox" class="tatoo-chb" data-model="tatoo2.checked" /></div>
+			<div class="left"><select class="tatoo-stat" data-model="tatoo2.add.stat"></select></div>
+			<div class="left"><select class="tatoo-add" data-model="tatoo2.add.value"></select></div>
+			<div class="left"> </div>
+			<div class="left"><select class="tatoo-stat" data-model="tatoo2.sub.stat"></select></div>
+			<div class="left"><select class="tatoo-sub" data-model="tatoo2.sub.value"></select></div>
+		</div>
+		<div class="clear"></div>
+		<div id="tatoo-slot-3">
+			<div class="left tatoo-header">Tatoo Slot 3: </div>
+			<div class="left"><input type="checkbox" class="tatoo-chb" data-model="tatoo3.checked" /></div>
+			<div class="left"><select class="tatoo-stat" data-model="tatoo3.add.stat"></select></div>
+			<div class="left"><select class="tatoo-add" data-model="tatoo3.add.value"></select></div>
+			<div class="left"> </div>
+			<div class="left"><select class="tatoo-stat" data-model="tatoo3.sub.stat"></select></div>
+			<div class="left"><select class="tatoo-sub" data-model="tatoo3.sub.value"></select></div>
+		</div>
+		<div class="clear"></div>
+	</fieldset>
+	<fieldset id="stats">
+		<legend>Stats</legend>
+		<div class="left stat-header">HP</div>
+		<div class="left stat" id="hp">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="left stat-divider"></div>
+		<div class="left stat-header">MP</div>
+		<div class="left stat" id="mp">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="clear"></div>
+		<div class="left stat-header">CP</div>
+		<div class="left stat" id="cp">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="clear"></div>
+		<div class="left stat-header">P. Atk</div>
+		<div class="left stat" id="patk">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="left stat-divider"></div>
+		<div class="left stat-header">M. Atk</div>
+		<div class="left stat" id="matk">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="clear"></div>
+		<div class="left stat-header">P. Def</div>
+		<div class="left stat" id="pdef">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="left stat-divider"></div>
+		<div class="left stat-header">M. Def</div>
+		<div class="left stat" id="mdef">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="clear"></div>
+		<div class="left stat-header">Accuracy</div>
+		<div class="left stat" id="accuracy">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="left stat-divider"></div>
+		<div class="left stat-header">Evasion</div>
+		<div class="left stat" id="evasion">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="clear"></div>
+		<div class="left stat-header">Critical</div>
+		<div class="left stat" id="pcritical">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="left stat-divider"></div>
+		<div class="left stat-header">Speed</div>
+		<div class="left stat" id="speed">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="clear"></div>
+		<div class="left stat-header">Atk. Spd.</div>
+		<div class="left stat" id="atkspd">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="left stat-divider"></div>
+		<div class="left stat-header">Cast. Spd.</div>
+		<div class="left stat" id="castspd">50000</div>
+		<div class="left stat-delta"></div>
+		<div class="clear"></div>
+		<hr />
+		<div class="left astat-header">P. Crit. Multiplier</div>
+		<div class="left astat" id="pcritmult">1</div>
+		<div class="left astat-delta"></div>
+		<div class="left astat-header">P. Atk. Crit.</div>
+		<div class="left astat" id="patkcrit">1</div>
+		<div class="clear"></div>
+		<div class="left astat-header">M. Crit. Multiplier</div>
+		<div class="left astat">1</div>
+		<div class="left astat-delta"></div>
+		<div class="clear"></div>
+		<div class="left astat-header">P. DPS</div>
+		<div class="left astat" id="pdps">1</div>
+		<div class="left astat-delta"></div>
+		<div class="clear"></div>
+		<div class="left astat-header">M. DPS</div>
+		<div class="left astat">1</div>
+		<div class="left astat-delta"></div>
+		<div class="clear"></div>
+		<div class="left astat-header">Real Atk. Speed</div>
+		<div class="left astat" id="realatkspeed">1</div>
+		<div class="left astat-delta"></div>
+		<div class="clear"></div>
+	</fieldset>
+	<div class="clear"></div>
+	<div id="container">
+		<fieldset id="equipment">
+			<legend>
+				<label><input type="checkbox" id="equipment-chb" checked="checked" />Equipment</label>
+				<span class="clear-btn">Clear</span>
+			</legend>
+			<div>
+				<div class="left eq-header">Weapon</div>
+				<div class="left">
+					<select id="weapon-grade" class="grade" data-model="weapon.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="weapon-ench" data-model="weapon.enchant" />
+				</div>
+				<div class="left">
+					<select id="weapon-type" data-model="weapon.type" data-load-order="1"></select>
+				</div>
+				<div class="left">
+					<select id="weapon" data-model="weapon.id"></select>
+				</div>
+				<div class="clear"></div>
+				<div class="left eq-header">Shield</div>
+				<div class="left">
+					<select id="shield-grade" class="grade" data-model="shield.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="shield-ench" data-model="shield.enchant" />
+				</div>
+				<div class="left">
+					<select id="shield" data-model="shield.id"></select>
+				</div>
+				<div class="clear"></div>
+				<hr />
+				<div class="left eq-set-header">Quick select armor set</div>
+				<div class="left">
+					<select id="set-grade" class="grade" data-model="setGrade"></select>
+				</div>
+				<div class="left">
+					<select id="set"></select>
+				</div>
+				<div class="clear"></div>
+				<hr />
+
+				<div class="left eq-header">Helmet</div>
+				<div class="left">
+					<select id="helmet-grade" class="grade" data-model="helmet.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="helmet-ench" data-model="helmet.enchant" />
+				</div>
+				<div class="left">
+					<select id="helmet" data-model="helmet.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<div class="left eq-header">Body Upper</div>
+				<div class="left">
+					<select id="body-upper-grade" class="grade" data-model="bodyUpper.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="body-upper-ench" data-model="bodyUpper.enchant" />
+				</div>
+				<div class="left">
+					<select id="body-upper" data-model="bodyUpper.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<div class="left eq-header">Body Lower</div>
+				<div class="left">
+					<select id="body-lower-grade" class="grade" data-model="bodyLower.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="body-lower-ench" data-model="bodyLower.enchant" />
+				</div>
+				<div class="left">
+					<select id="body-lower" data-model="bodyLower.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<div class="left eq-header">Gloves</div>
+				<div class="left">
+					<select id="gloves-grade" class="grade" data-model="gloves.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="gloves-ench" data-model="gloves.enchant" />
+				</div>
+				<div class="left">
+					<select id="gloves" data-model="gloves.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<div class="left eq-header">Boots</div>
+				<div class="left">
+					<select id="boots-grade" class="grade" data-model="boots.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="boots-ench" data-model="boots.enchant" />
+				</div>
+				<div class="left">
+					<select id="boots" data-model="boots.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<hr />
+
+				<div class="left eq-header">Necklace</div>
+				<div class="left">
+					<select id="necklace-grade" class="grade" data-model="necklace.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="necklace-ench" data-model="necklace.enchant" />
+				</div>
+				<div class="left">
+					<select id="necklace" data-model="necklace.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<div class="left eq-header">Earring</div>
+				<div class="left">
+					<select id="earring1-grade" class="grade" data-model="earring1.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="earring1-ench" data-model="earring1.enchant" />
+				</div>
+				<div class="left">
+					<select id="earring1" data-model="earring1.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<div class="left eq-header">Earring</div>
+				<div class="left">
+					<select id="earring2-grade" class="grade" data-model="earring2.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="earring2-ench" data-model="earring2.enchant" />
+				</div>
+				<div class="left">
+					<select id="earring2" data-model="earring2.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<div class="left eq-header">Ring</div>
+				<div class="left">
+					<select id="ring1-grade" class="grade" data-model="ring1.grade" data-load-order="1"></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="ring1-ench" data-model="ring1.enchant" />
+				</div>
+				<div class="left">
+					<select id="ring1" data-model="ring1.id"></select>
+				</div>
+				<div class="clear"></div>
+
+				<div class="left eq-header">Ring</div>
+				<div class="left">
+					<select id="ring2-grade" class="grade" data-model="ring2.grade">></select>
+				</div>
+				<div class="left eq-enchant">
+					+ <input type="number" min="0" id="ring2-ench" data-model="ring2.enchant" />
+				</div>
+				<div class="left">
+					<select id="ring2" data-model="ring2.id"></select>
+				</div>
+				<div class="clear"></div>
+			<div>
+		</fieldset>
+		<div class="clear"></div>
+		<fieldset id="selfbuffs">
+			<legend>
+				<label><input type="checkbox" id="selfbuffs-chb" checked="checked" />Self Buffs</label>
+				<span class="clear-btn">Clear</span>
+			</legend>
+			<div></div>
+		</fieldset>
+		<div class="clear"></div>
+		<fieldset id="toggles">
+			<legend>
+				<label><input type="checkbox" id="toggles-chb" checked="checked" />Toggles</label>
+				<span class="clear-btn">Clear</span>
+			</legend>
+			<div></div>
+		</fieldset>
+		<div class="clear"></div>
+		<fieldset id="commonbuffs">
+			<legend>
+				<label><input type="checkbox" id="commonbuffs-chb" checked="checked" />Common Buffs</label>
+				<span class="clear-btn">Clear</span>
+			</legend>
+			<div></div>
+		</fieldset>
+		<div class="clear"></div>
+		<fieldset id="songs">
+			<legend>
+				<label><input type="checkbox" id="songs-chb" checked="checked" />Songs</label>
+				<span class="clear-btn">Clear</span>
+			</legend>
+			<div></div>
+		</fieldset>
+		<div class="clear"></div>
+		<fieldset id="dances">
+			<legend>
+				<label><input type="checkbox" id="dances-chb" checked="checked" />Dances</label>
+				<span class="clear-btn">Clear</span>
+			</legend>
+			<div></div>
+		</fieldset>
+		<div class="clear"></div>
+		<fieldset id="clanskills">
+			<legend>
+				<label><input type="checkbox" id="clanskills-chb" checked="checked" />Clan Skills</label>
+				<span class="clear-btn">Clear</span>
+			</legend>
+			<div></div>
+		</fieldset>
+		<div class="clear"></div>
+		<fieldset id="passives">
+			<legend>
+				<label><input type="checkbox" id="passives-chb" checked="checked" />Passives</label>
+			</legend>
+			<div>
+				<div class="left">
+					<label><input type="checkbox" id="auto-select-passives" checked="checked" data-model="autoSelectPassives" />Auto Select</label>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</fieldset>
+	</div>
+</body>
+</html>
